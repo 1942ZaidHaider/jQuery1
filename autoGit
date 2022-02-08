@@ -1,0 +1,10 @@
+#/bin/bash
+
+git add .
+echo "added all"
+git commit -m "$1"
+echo "Comitted with message [$1]"
+git push origin master
+echo "====================log===================="
+git log | head
+git log | head -n 1 | xclip -selection c
