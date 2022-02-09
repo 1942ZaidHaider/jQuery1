@@ -30,12 +30,16 @@ $(function () {
     let prod = {};
     if (!$("#product_sku").val()) {
       error("SKU field is empty");
+      redBorder($("#product_sku"));
     } else if (!$("#product_name").val()) {
       error("Name field is empty");
+      redBorder($("#product_name"));
     } else if (isNaN(parseFloat($("#product_sku").val()))) {
       error("SKU field not a number");
+      redBorder($("#product_sku"));
     } else if (!isNaN(parseFloat($("#product_name").val()))) {
       error("Name field is a number, string needed");
+      redBorder($("#product_name"));
     } else {
       prod.sku = $("#product_sku").val();
       prod.name = $("#product_name").val();
@@ -115,4 +119,13 @@ function success() {
   $("#add_product").val("Add Product");
   $(".error").hide();
   $(".success").show();
+  $("input").each(function(){
+    whiteBorder($(this));
+  });
+}
+function redBorder(e){
+  $(e).css("border-color","red");
+}
+function whiteBorder(e){
+  $(e).css("border-color",'');
 }
